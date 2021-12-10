@@ -1,13 +1,14 @@
-app_name = "awesome web"
-log_level = "DEBUG"
+app_name="File Master Client"
+[log]
+level="DEBUG"
+
+[server]
+host=""
+port=8080
 
 [mysql]
-  database = "awesome"
-  ip = "127.0.0.1"
-  password = "123456"
-  port = 3306
-  user = "root"
-
-[redis]
-  ip = "127.0.0.1"
-  port = 6381
+ip="127.0.0.1"
+port=3306
+user="root"
+password="123456"
+database="fmc"
