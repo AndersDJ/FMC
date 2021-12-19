@@ -18,16 +18,20 @@ package cmd
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
+	"github.com/AndersDJ/FMC/pkg/config"
 	"github.com/AndersDJ/FMC/router"
 	log "github.com/cihub/seelog"
+	"github.com/gin-gonic/gin"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // serverCmd represents the server command
@@ -38,6 +42,8 @@ var serverCmd = &cobra.Command{
 	blablablabla
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
+		log.Info(cmd)
+		log.Info(args)
 		startServer()
 	},
 }
@@ -48,8 +54,19 @@ func init() {
 
 func startServer() {
 	r := router.New()
+
+	if config.RELEASE {
+		gin.SetMode(gin.ReleaseMode)
+	} else {
+		gin.SetMode(gin.DebugMode)
+	}
+
+	var addr = fmt.Sprintf("%s:%d", viper.GetString("server.host"), viper.Get("server.port"))
+
+	log.Info(addr)
+
 	srv := &http.Server{
-		Addr:    ":8080",
+		Addr:    addr,
 		Handler: r,
 	}
 

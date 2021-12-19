@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -37,10 +35,10 @@ func init() {
 
 }
 
-func printEvents(m map[string][]string) {
-	for evt, cmds := range m {
-		for i, cmd := range cmds {
-			fmt.Printf("%s(%d): %s\n", evt, i, cmd)
-		}
-	}
-}
+// func printEvents(m map[string][]string) {
+// 	for evt, cmds := range m {
+// 		for i, cmd := range cmds {
+// 			fmt.Printf("%s(%d): %s\n", evt, i, cmd)
+// 		}
+// 	}
+// }
