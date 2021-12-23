@@ -13,6 +13,7 @@ func LogHeader() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		log.Infof("auth url= %s", c.Request.URL.Path)
 		h := fmt.Sprintf("From=%s", c.Request.RemoteAddr)
+		// log.Infof("BasePath=%s", c.Request.Header.Get("basePath"))
 		c.Set(LogHeaderKey, h)
 		c.Get("Access-Control-Allow-Origin")
 		log.Debug(h)

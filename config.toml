@@ -1,6 +1,6 @@
 app_name="File Master Client"
 
-control_path="/Users/diaojian/Downloads"
+control_path="/Users/diaojian/Downloads/test"
 
 [log]
 level="DEBUG"

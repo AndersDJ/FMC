@@ -27,8 +27,10 @@ func New() *gin.Engine {
 	r1 := r.Group("/test", middleware.LogHeader())
 	r1.GET("/ping", func(c *gin.Context) { c.String(http.StatusOK, "pong") })
 	r1.GET("/test", middleware.ListDirHandler())
+
 	r2 := r.Group("/service", middleware.LogHeader())
 	r2.GET("/fileList", middleware.ListDirHandler())
+	r2.POST("/uploadFiles", middleware.UploadHandler())
 
 	return r
 }
